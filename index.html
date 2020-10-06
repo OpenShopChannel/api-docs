@@ -1,0 +1,807 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-e9bde216.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-dcf58b10.png" class="logo" alt="" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#packages" class="toc-h1 toc-link" data-title="Packages">Packages</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-packages" class="toc-h2 toc-link" data-title="Get All Packages">Get All Packages</a>
+                  </li>
+                  <li>
+                    <a href="#get-specific-package" class="toc-h2 toc-link" data-title="Get Specific Package">Get Specific Package</a>
+                  </li>
+                  <li>
+                    <a href="#get-packages-in-category" class="toc-h2 toc-link" data-title="Get Packages in Category">Get Packages in Category</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#hosts-secondary-repos" class="toc-h1 toc-link" data-title="Hosts (Secondary Repos)">Hosts (Secondary Repos)</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-hosts-list" class="toc-h2 toc-link" data-title="Get Hosts List">Get Hosts List</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#download" class="toc-h1 toc-link" data-title="Download">Download</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#download-zipped-package" class="toc-h2 toc-link" data-title="Download Zipped Package">Download Zipped Package</a>
+                  </li>
+                  <li>
+                    <a href="#download-package-icon" class="toc-h2 toc-link" data-title="Download Package Icon">Download Package Icon</a>
+                  </li>
+                  <li>
+                    <a href="#download-package-xml" class="toc-h2 toc-link" data-title="Download Package XML">Download Package XML</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#controllers" class="toc-h1 toc-link" data-title="Controllers">Controllers</a>
+          </li>
+          <li>
+            <a href="#credits" class="toc-h1 toc-link" data-title="Credits">Credits</a>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://oscwii.org'>Open Shop Channel Website</a></li>
+            <li><a href='https://discord.gg/by6mR5N'>Discord Server</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the Open Shop Channel API! You can use our API to access Open Shop Channel&#39;s endpoints, which can get information on Open Shop Channel apps, secondary repositories, and more.</p>
+
+<p>We don&#39;t have any bindings yet, but it&#39;s certainly coming! Instead, we will provide native examples in multiple languages. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+
+<p>For support and general assistance, please <a href="https://discord.gg/by6mR5N">join our Discord server</a>, this is the best way to contact us.</p>
+<h1 id='packages'>Packages</h1>
+<p>Packages (Applications) are the base items provided through the API.
+Each package returned by the API includes the following information, in an alphabetical order:</p>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Example Value</th>
+<th>Purpose</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>category</td>
+<td>&quot;demos&quot;</td>
+<td>Category of package.</td>
+</tr>
+<tr>
+<td>coder</td>
+<td>&quot;mjbauer95&quot;</td>
+<td>Developer of package.</td>
+</tr>
+<tr>
+<td>contributors</td>
+<td>&quot;mjbauer95&quot;</td>
+<td>Contributors. Usually empty / none.</td>
+</tr>
+<tr>
+<td>controllers</td>
+<td>&quot;w&quot;</td>
+<td>More information in Controllers section.</td>
+</tr>
+<tr>
+<td>display_name</td>
+<td>&quot;Libmii Example&quot;</td>
+<td>Name / Title of package.</td>
+</tr>
+<tr>
+<td>package_type</td>
+<td>&quot;dol&quot;</td>
+<td>Type of package. Possible types: dol, elf, thm (hbc theme).</td>
+</tr>
+<tr>
+<td>downloads</td>
+<td>220</td>
+<td>Amount of downloads.</td>
+</tr>
+<tr>
+<td>extracted</td>
+<td>232449</td>
+<td>File size of application, when extracted.</td>
+</tr>
+<tr>
+<td>internal_name</td>
+<td>&quot;libmii-example&quot;</td>
+<td>Also known as hbbID. Used for sorting internally.</td>
+</tr>
+<tr>
+<td>long_description</td>
+<td>&quot;An example of libmii. It shows each Mii entry as a name.&quot;</td>
+<td>Long description for the package.</td>
+</tr>
+<tr>
+<td>rating</td>
+<td>7</td>
+<td>Rating of application between 1 to 10</td>
+</tr>
+<tr>
+<td>release_date</td>
+<td>1237611600</td>
+<td>Release date specified by the package.</td>
+</tr>
+<tr>
+<td>short_description</td>
+<td>&quot;Example of libmii&quot;</td>
+<td>Short description, displays on HBB front page.</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>1237611600</td>
+<td>Date of last update. Same as release_date, for now.</td>
+</tr>
+<tr>
+<td>version</td>
+<td>&quot;0.1alpha&quot;</td>
+<td>Package version</td>
+</tr>
+<tr>
+<td>zip_size</td>
+<td>115725</td>
+<td>Size of zipped package.</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-packages'>Get All Packages</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.oscwii.org/v1/primary/packages"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demos"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"coder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mjbauer95"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"contributors"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"controllers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"w"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Libmii Example"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"package_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dol"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"downloads"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"extracted"</span><span class="p">:</span><span class="w"> </span><span class="mi">232449</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"internal_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"libmii-example"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"long_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An example of libmii. It shows each Mii entry as a name."</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"release_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1237611600</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"short_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example of libmii"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">1237611600</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1alpha"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"zip_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">115725</span><span class="w">
+  </span><span class="p">},</span><span class="w"> 
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demos"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"coder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Owe"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"contributors"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"controllers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"w"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Newo Sky"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"package_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dol"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"downloads"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"extracted"</span><span class="p">:</span><span class="w"> </span><span class="mi">3007113</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"internal_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"newosky"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"long_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Procedurally generated landscape and walking simulator demo"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"release_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508648400</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"short_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Procgen walking simulator"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508648400</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.1"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"zip_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2052706</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all applications / packages in the specified host.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://api.oscwii.org/v1/&lt;host&gt;/packages</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&lt;host&gt;</td>
+<td>primary</td>
+<td>Host to use (eg. primary, themes). For info about hosts, scroll down to the Hosts section.</td>
+</tr>
+</tbody></table>
+
+<aside class="info">
+For the time being, packages will always return 0 downloads and no rating. This will be changed in the future.
+</aside>
+<h2 id='get-specific-package'>Get Specific Package</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.oscwii.org/v1/primary/package/WiiVNC"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"utilities"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"coder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PaulWagener"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"contributors"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"controllers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wg"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WiiVNC"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"package_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dol"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"downloads"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"extracted"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666173</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"internal_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WiiVNC"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"long_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Connect to a VNC server"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"release_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1575227546</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"short_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Control your computer"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">1575227546</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.3"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"zip_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">832443</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a specific application / package.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://api.oscwii.org/v1/&lt;host&gt;/package/&lt;name&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&lt;host&gt;</td>
+<td>primary</td>
+<td>Host to use (eg. primary, themes). For info about hosts, scroll down to the Hosts section.</td>
+</tr>
+<tr>
+<td>&lt;name&gt;</td>
+<td></td>
+<td>Name of application / package to get.</td>
+</tr>
+</tbody></table>
+<h2 id='get-packages-in-category'>Get Packages in Category</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.oscwii.org/v1/primary/category/demos/packages"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demos"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"coder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mjbauer95"</span><span class="p">,</span><span class="w"> 
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">},</span><span class="w"> 
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demos"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"coder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Owe"</span><span class="p">,</span><span class="w"> 
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">},</span><span class="w"> 
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demos"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"coder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Owe"</span><span class="p">,</span><span class="w"> 
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">},</span><span class="w"> 
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demos"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"coder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Owe"</span><span class="p">,</span><span class="w"> 
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all applications / packages from specified host and category.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET http://api.oscwii.org/v1/&lt;host&gt;/category/&lt;category&gt;/packages</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&lt;host&gt;</td>
+<td>primary</td>
+<td>Host to use (eg. primary, themes). For info about hosts, scroll down to the Hosts section.</td>
+</tr>
+<tr>
+<td>&lt;category&gt;</td>
+<td></td>
+<td>Name of category to get.</td>
+</tr>
+</tbody></table>
+<h1 id='hosts-secondary-repos'>Hosts (Secondary Repos)</h1><h2 id='get-hosts-list'>Get Hosts List</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.oscwii.org/v1/hosts"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"repos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"primary"</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"themes"</span><span class="w">
+  </span><span class="p">],</span><span class="w"> 
+  </span><span class="nl">"repositories"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The official Open Shop Channel Homebrew Apps repository."</span><span class="p">,</span><span class="w"> 
+      </span><span class="nl">"host"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hbb1.oscwii.org"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open Shop Channel"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="nl">"themes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The official Open Shop Channel Homebrew Channel Themes repository."</span><span class="p">,</span><span class="w"> 
+      </span><span class="nl">"host"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hbb3.oscwii.org"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Homebrew Channel Themes"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all hosts.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET http://api.oscwii.org/v1/hosts</code></p>
+
+<aside class="warning">
+It's mandatory to specify the host in most API endpoints.
+</aside>
+<h1 id='download'>Download</h1><h2 id='download-zipped-package'>Download Zipped Package</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://hbb1.oscwii.org/hbb/WiiVNC/WiiVNC.zip"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command downloads the package &quot;WiiVNC&quot; from the &quot;primary&quot; host.</p>
+</blockquote>
+
+<p>Download a zipped homebrew app.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET http://&lt;hostname&gt;/hbb/&lt;name&gt;/&lt;name&gt;.zip</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&lt;hostname&gt;</td>
+<td><b>Mandatory</b></td>
+<td>Hostname of host to use (eg. hbb1.oscwii.org for primary). For info about hosts, go to the Hosts section.</td>
+</tr>
+<tr>
+<td>&lt;name&gt;</td>
+<td><b>Mandatory</b></td>
+<td>Internal name / hbbID of package to get.</td>
+</tr>
+</tbody></table>
+<h2 id='download-package-icon'>Download Package Icon</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://hbb1.oscwii.org/hbb/WiiVNC.png"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command downloads the icon for &quot;WiiVNC&quot; from the &quot;primary&quot; host.</p>
+</blockquote>
+
+<p>Download the icon for an homebrew app.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET http://&lt;hostname&gt;/hbb/&lt;name&gt;.png</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&lt;hostname&gt;</td>
+<td><b>Mandatory</b></td>
+<td>Hostname of host to use (eg. hbb1.oscwii.org for primary). For info about hosts, go to the Hosts section.</td>
+</tr>
+<tr>
+<td>&lt;name&gt;</td>
+<td><b>Mandatory</b></td>
+<td>Internal name / hbbID of package to get.</td>
+</tr>
+</tbody></table>
+<h2 id='download-package-xml'>Download Package XML</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://hbb1.oscwii.org/unzipped_apps/WiiVNC/apps/WiiVNC/meta.xml"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command downloads the icon for &quot;WiiVNC&quot; from the &quot;primary&quot; host.</p>
+</blockquote>
+
+<p>Download the meta.xml for an homebrew app.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET https://&lt;hostname&gt;/unzipped_apps/&lt;name&gt;/apps/&lt;name&gt;/meta.xml</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&lt;hostname&gt;</td>
+<td><b>Mandatory</b></td>
+<td>Hostname of host to use (eg. hbb1.oscwii.org for primary). For info about hosts, go to the Hosts section.</td>
+</tr>
+<tr>
+<td>&lt;name&gt;</td>
+<td><b>Mandatory</b></td>
+<td>Internal name / hbbID of package to get.</td>
+</tr>
+</tbody></table>
+<h1 id='controllers'>Controllers</h1>
+<p>The Homebrew Browser parses package supported controllers by the following system:</p>
+
+<table><thead>
+<tr>
+<th>Letters</th>
+<th>Controller</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>w</td>
+<td>One wii remote is supported</td>
+</tr>
+<tr>
+<td>ww</td>
+<td>Two wii remotes are supported</td>
+</tr>
+<tr>
+<td>www</td>
+<td>Three wii remotes are supported</td>
+</tr>
+<tr>
+<td>wwww</td>
+<td>Four wii remotes are supported</td>
+</tr>
+<tr>
+<td>g</td>
+<td>Gamecube controller is supported</td>
+</tr>
+<tr>
+<td>n</td>
+<td>Nunchuck is supported</td>
+</tr>
+<tr>
+<td>c</td>
+<td>Classic Controller is supported</td>
+</tr>
+<tr>
+<td>s</td>
+<td>Compatible with SDHC cards</td>
+</tr>
+<tr>
+<td>k</td>
+<td>Keyboard is supported. This is not displayed on the Homebrew Browser.</td>
+</tr>
+<tr>
+<td>z</td>
+<td>Wii Zapper is supported. This is not displayed on the Homebrew Browser.</td>
+</tr>
+</tbody></table>
+
+<p>If a package returns it&#39;s controllers are &quot;wwwwgncs&quot;, then it supports 4 wii remotes, a gamecube controller, a nunchuck and is compatible with SDHC cards.</p>
+<h1 id='credits'>Credits</h1>
+<p>Big thanks to Lyfe from <a href="https://brewtools.dev">brewtools.dev</a> for creating the parser used by the API.</p>
+
+<p>Documentation and API by dhtdht020 @ Open Shop Channel.</p>
+
+<p>The Open Shop Channel is an Open Source project. <a href="https://github.com/OpenShopChannel">Learn More</a></p>
+
+<p>All rights reserved, Open Shop Channel 2018-2020.</p>
+
+<p><img src="images/images/footer_banner.png" alt="" /></p>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
