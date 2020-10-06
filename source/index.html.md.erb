@@ -1,0 +1,331 @@
+---
+title: API Reference
+
+language_tabs: # must be one of https://git.io/vQNgJ
+  - shell
+
+toc_footers:
+  - <a href='https://oscwii.org'>Open Shop Channel Website</a>
+  - <a href='https://discord.gg/by6mR5N'>Discord Server</a>
+
+search: true
+
+code_clipboard: true
+---
+
+# Introduction
+
+Welcome to the Open Shop Channel API! You can use our API to access Open Shop Channel's endpoints, which can get information on Open Shop Channel apps, secondary repositories, and more.
+
+We don't have any bindings yet, but it's certainly coming! Instead, we will provide native examples in multiple languages. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+
+For support and general assistance, please [join our Discord server](https://discord.gg/by6mR5N), this is the best way to contact us.
+
+# Packages
+
+Packages (Applications) are the base items provided through the API.
+Each package returned by the API includes the following information, in an alphabetical order:
+
+Type | Example Value | Purpose
+--------- | ------- | -----------
+category | "demos" | Category of package.
+coder | "mjbauer95" | Developer of package.
+contributors | "mjbauer95" | Contributors. Usually empty / none.
+controllers | "w" | More information in Controllers section.
+display_name | "Libmii Example" | Name / Title of package.
+package_type | "dol" | Type of package. Possible types: dol, elf, thm (hbc theme).
+downloads | 220 | Amount of downloads.
+extracted | 232449 | File size of application, when extracted.
+internal_name | "libmii-example" | Also known as hbbID. Used for sorting internally.
+long_description | "An example of libmii. It shows each Mii entry as a name." | Long description for the package.
+rating | 7 | Rating of application between 1 to 10
+release_date | 1237611600 | Release date specified by the package.
+short_description | "Example of libmii" | Short description, displays on HBB front page.
+updated | 1237611600 | Date of last update. Same as release_date, for now.
+version | "0.1alpha" | Package version
+zip_size | 115725 | Size of zipped package.
+
+
+## Get All Packages
+
+
+```shell
+curl "http://api.oscwii.org/v1/primary/packages"
+```
+
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "category": "demos", 
+    "coder": "mjbauer95", 
+    "contributors": "", 
+    "controllers": "w", 
+    "display_name": "Libmii Example", 
+    "package_type": "dol", 
+    "downloads": 0, 
+    "extracted": 232449, 
+    "internal_name": "libmii-example", 
+    "long_description": "An example of libmii. It shows each Mii entry as a name.", 
+    "rating": "", 
+    "release_date": 1237611600, 
+    "short_description": "Example of libmii", 
+    "updated": 1237611600, 
+    "version": "0.1alpha", 
+    "zip_size": 115725
+  }, 
+  {
+    "category": "demos", 
+    "coder": "Owe", 
+    "contributors": "", 
+    "controllers": "w", 
+    "display_name": "Newo Sky", 
+    "package_type": "dol", 
+    "downloads": 0, 
+    "extracted": 3007113, 
+    "internal_name": "newosky", 
+    "long_description": "Procedurally generated landscape and walking simulator demo", 
+    "rating": "", 
+    "release_date": 1508648400, 
+    "short_description": "Procgen walking simulator", 
+    "updated": 1508648400, 
+    "version": "1.1", 
+    "zip_size": 2052706
+  }
+]
+```
+
+This endpoint retrieves all applications / packages in the specified host.
+
+### HTTP Request
+
+`GET http://api.oscwii.org/v1/<host>/packages`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+\<host\> | primary | Host to use (eg. primary, themes). For info about hosts, scroll down to the Hosts section.
+
+<aside class="info">
+For the time being, packages will always return 0 downloads and no rating. This will be changed in the future.
+</aside>
+
+## Get Specific Package
+
+
+```shell
+curl "http://api.oscwii.org/v1/primary/package/WiiVNC"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "category": "utilities", 
+  "coder": "PaulWagener", 
+  "contributors": "", 
+  "controllers": "wg", 
+  "display_name": "WiiVNC", 
+  "package_type": "dol", 
+  "downloads": 0, 
+  "extracted": 1666173, 
+  "internal_name": "WiiVNC", 
+  "long_description": "Connect to a VNC server", 
+  "rating": "", 
+  "release_date": 1575227546, 
+  "short_description": "Control your computer", 
+  "updated": 1575227546, 
+  "version": "1.3", 
+  "zip_size": 832443
+}
+```
+
+This endpoint retrieves a specific application / package.
+
+### HTTP Request
+
+`GET http://api.oscwii.org/v1/<host>/package/<name>`
+
+### URL Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+\<host\> | primary | Host to use (eg. primary, themes). For info about hosts, scroll down to the Hosts section.
+\<name\> | | Name of application / package to get.
+
+## Get Packages in Category
+
+```shell
+curl "http://api.oscwii.org/v1/primary/category/demos/packages"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "category": "demos", 
+    "coder": "mjbauer95", 
+    ...
+  }, 
+  {
+    "category": "demos", 
+    "coder": "Owe", 
+	...
+  }, 
+  {
+    "category": "demos", 
+    "coder": "Owe", 
+    ...
+  }, 
+  {
+    "category": "demos", 
+    "coder": "Owe", 
+    ...
+  }
+]
+```
+
+This endpoint retrieves all applications / packages from specified host and category.
+
+### HTTP Request
+
+`GET http://api.oscwii.org/v1/<host>/category/<category>/packages`
+
+### URL Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+\<host\> | primary | Host to use (eg. primary, themes). For info about hosts, scroll down to the Hosts section.
+\<category\> | | Name of category to get.
+
+# Hosts (Secondary Repos)
+
+## Get Hosts List
+
+```shell
+curl "http://api.oscwii.org/v1/hosts"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "repos": [
+    "primary", 
+    "themes"
+  ], 
+  "repositories": {
+    "primary": {
+      "description": "The official Open Shop Channel Homebrew Apps repository.", 
+      "host": "hbb1.oscwii.org", 
+      "name": "Open Shop Channel"
+    }, 
+    "themes": {
+      "description": "The official Open Shop Channel Homebrew Channel Themes repository.", 
+      "host": "hbb3.oscwii.org", 
+      "name": "Homebrew Channel Themes"
+    }
+  }
+}
+```
+
+This endpoint retrieves all hosts.
+
+### HTTP Request
+
+`GET http://api.oscwii.org/v1/hosts`
+
+<aside class="warning">
+It's mandatory to specify the host in most API endpoints.
+</aside>
+
+# Download
+
+## Download Zipped Package
+
+```shell
+curl "https://hbb1.oscwii.org/hbb/WiiVNC/WiiVNC.zip"
+```
+> The above command downloads the package "WiiVNC" from the "primary" host.
+
+Download a zipped homebrew app.
+
+### HTTP Request
+
+`GET http://<hostname>/hbb/<name>/<name>.zip`
+
+Parameter | Default | Description
+--------- | ------- | -----------
+\<hostname\> | <b>Mandatory</b> | Hostname of host to use (eg. hbb1.oscwii.org for primary). For info about hosts, go to the Hosts section.
+\<name\> | <b>Mandatory</b> | Internal name / hbbID of package to get.
+
+## Download Package Icon
+
+```shell
+curl "https://hbb1.oscwii.org/hbb/WiiVNC.png"
+```
+> The above command downloads the icon for "WiiVNC" from the "primary" host.
+
+Download the icon for an homebrew app.
+
+### HTTP Request
+
+`GET http://<hostname>/hbb/<name>.png`
+
+Parameter | Default | Description
+--------- | ------- | -----------
+\<hostname\> | <b>Mandatory</b> | Hostname of host to use (eg. hbb1.oscwii.org for primary). For info about hosts, go to the Hosts section.
+\<name\> | <b>Mandatory</b> | Internal name / hbbID of package to get.
+
+## Download Package XML
+
+```shell
+curl "https://hbb1.oscwii.org/unzipped_apps/WiiVNC/apps/WiiVNC/meta.xml"
+```
+> The above command downloads the icon for "WiiVNC" from the "primary" host.
+
+Download the meta.xml for an homebrew app.
+
+### HTTP Request
+
+`GET https://<hostname>/unzipped_apps/<name>/apps/<name>/meta.xml`
+
+Parameter | Default | Description
+--------- | ------- | -----------
+\<hostname\> | <b>Mandatory</b> | Hostname of host to use (eg. hbb1.oscwii.org for primary). For info about hosts, go to the Hosts section.
+\<name\> | <b>Mandatory</b> | Internal name / hbbID of package to get.
+
+# Controllers
+
+The Homebrew Browser parses package supported controllers by the following system:
+
+Letters | Controller
+--------- | -------
+w | One wii remote is supported
+ww | Two wii remotes are supported
+www | Three wii remotes are supported
+wwww | Four wii remotes are supported
+g | Gamecube controller is supported
+n | Nunchuck is supported
+c | Classic Controller is supported
+s | Compatible with SDHC cards
+k | Keyboard is supported. This is not displayed on the Homebrew Browser.
+z | Wii Zapper is supported. This is not displayed on the Homebrew Browser.
+
+If a package returns it's controllers are "wwwwgncs", then it supports 4 wii remotes, a gamecube controller, a nunchuck and is compatible with SDHC cards.
+
+# Credits
+
+Big thanks to Lyfe from [brewtools.dev](https://brewtools.dev) for creating the parser used by the API.
+
+Documentation and API by dhtdht020 @ Open Shop Channel.
+
+The Open Shop Channel is an Open Source project. [Learn More](https://github.com/OpenShopChannel)
+
+All rights reserved, Open Shop Channel 2018-2020.
+
+<%= image_tag "images/footer_banner.png" %>
