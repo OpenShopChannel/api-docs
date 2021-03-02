@@ -50,7 +50,7 @@ zip_size | 115725 | Size of zipped package.
 
 
 ```shell
-curl "http://api.oscwii.org/v1/primary/packages"
+curl "http://api.oscwii.org/v2/primary/packages"
 ```
 
 
@@ -101,7 +101,7 @@ This endpoint retrieves all applications / packages in the specified host.
 
 ### HTTP Request
 
-`GET http://api.oscwii.org/v1/<host>/packages`
+`GET http://api.oscwii.org/v2/<host>/packages`
 
 ### Query Parameters
 
@@ -147,7 +147,7 @@ This endpoint retrieves a specific application / package.
 
 ### HTTP Request
 
-`GET http://api.oscwii.org/v1/<host>/package/<name>`
+`GET http://api.oscwii.org/v2/<host>/package?package=<name>`
 
 ### URL Parameters
 
@@ -159,7 +159,7 @@ Parameter | Default | Description
 ## Get Packages in Category
 
 ```shell
-curl "http://api.oscwii.org/v1/primary/category/demos/packages"
+curl "http://api.oscwii.org/v2/primary/package?category=<category>"
 ```
 
 > The above command returns JSON structured like this:
@@ -193,7 +193,7 @@ This endpoint retrieves all applications / packages from specified host and cate
 
 ### HTTP Request
 
-`GET http://api.oscwii.org/v1/<host>/category/<category>/packages`
+`GET http://api.oscwii.org/v2/<host>/packages?category=<category>`
 
 ### URL Parameters
 
